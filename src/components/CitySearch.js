@@ -9,14 +9,10 @@ const CitySearch = ({ allLocations }) => {
 
   const handleInputChanged = (event) => {
     const value = event.target.value;
-  
-    const filteredLocations = allLocations
-      ? allLocations.filter((location) => {
-          // Check if location is a valid string before calling toUpperCase
-          return location && typeof location === 'string' && location.toUpperCase().indexOf(value.toUpperCase()) > -1;
-        })
-      : [];  
-
+    const filteredLocations = allLocations ? allLocations.filter((location) => {
+      return location.toUpperCase().indexOf(value.toUpperCase()) > -1;
+    }) : [];
+    
     setQuery(value);
     setSuggestions(filteredLocations);
   };

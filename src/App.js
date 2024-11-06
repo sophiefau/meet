@@ -7,7 +7,7 @@ import './App.css';
 const App = () => {
   return (
     <div className="App">
-      <CitySearch />
+      <CitySearch/>
       <EventList />  
     </div>
   );

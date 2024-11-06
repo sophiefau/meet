@@ -21,5 +21,3 @@ console.error = (...args) => {
   const ignoreMessage = MESSAGES_TO_IGNORE.find(message => args.toString().includes(message));
   if (!ignoreMessage) originalError(...args);
 }
-
-import 'mutationobserver-shim';
