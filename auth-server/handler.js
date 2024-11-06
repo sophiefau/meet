@@ -101,6 +101,7 @@ module.exports.getCalendarEvents = async (event) => {
         headers: {
           'Access-Control-Allow-Origin': '*',
           'Access-Control-Allow-Credentials': true,
+          'Access-Control-Allow-Headers': 'Authorization'
         },
         body: JSON.stringify({ events: results.data.items }),
       };
