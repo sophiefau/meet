@@ -17,6 +17,24 @@ export const extractLocations = (events) => {
 };
 
 /**
+ * Function to extract specific properties from each event
+ * @param {*} events - Array of events to process
+ * @returns {Array} - Array of event objects with specific properties
+ */
+export const getEventDetails = (events) => {
+  return events.map((event) => ({
+    summary: event.summary,
+    start: {
+      dateTime: event.start.dateTime,
+      timeZone: event.start.timeZone,
+    },
+    location: event.location,
+    htmlLink: event.htmlLink,
+    description: event.description,
+  }));
+};
+
+/**
  *
  * This function will fetch the list of all events
  */
