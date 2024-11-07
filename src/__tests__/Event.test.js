@@ -17,4 +17,19 @@ describe('<Event /> component', () => {
         const eventTitle = EventComponent.queryByText(event.summary);
         expect(eventTitle).toBeInTheDocument();
     });
+
+    test('render event created date', () => {
+      const eventCreated = EventComponent.queryByText(event.created); 
+      expect(eventCreated).toBeInTheDocument();
+  });
+
+  test('render event location', () => {
+        const eventLocation = EventComponent.queryByText(event.location);
+        expect(eventLocation).toBeInTheDocument();
+    });
+
+    test('render event details button', () => {
+      const detailButton = EventComponent.queryByText('Show Details');
+      expect(detailButton).toBeInTheDocument();
+  });
 });

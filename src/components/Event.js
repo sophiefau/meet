@@ -1,5 +1,5 @@
 // src/components/Event.js
-import React from 'react';
+import React from "react";
 import { useState } from "react";
 
 const Event = ({ event }) => {
@@ -11,29 +11,29 @@ const Event = ({ event }) => {
   };
 
   return (
-    <li><div className="event">
-    <h2>{event.summary}</h2>
-    <p>
-      {event.start.dateTime} {event.start.timeZone} <br />
-      @{event.location}
-    </p>
-    <button onClick={toggleDetails}>
-      {showDetails ? 'Hide Details' : 'Show Details'}
-    </button>
-    
-    {showDetails && (
-      <div className="event-details">
-        <h3>About event:</h3>
-        <a href={event.htmlLink} target="_blank" rel="noopener noreferrer">
-          See details on Google Calendar
-        </a>
-        <p>
-          <strong>Description:</strong> {event.description}
-        </p>
+    <li>
+      <div className="event">
+        <h2>{event.summary}</h2>
+        <p> {event.created} </p>
+        <p> {event.location}</p>
+        <button onClick={toggleDetails}>
+          {showDetails ? "Hide Details" : "Show Details"}
+        </button>
+
+        {showDetails && (
+          <div className="event-details">
+            <h3>About event:</h3>
+            <a href={event.htmlLink} target="_blank" rel="noopener noreferrer">
+              See details on Google Calendar
+            </a>
+            <p>
+              <strong>Description:</strong> {event.description}
+            </p>
+          </div>
+        )}
       </div>
-    )}
-    </div></li>
+    </li>
   );
-}
+};
 
 export default Event;

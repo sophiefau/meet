@@ -24,10 +24,7 @@ export const extractLocations = (events) => {
 export const getEventDetails = (events) => {
   return events.map((event) => ({
     summary: event.summary,
-    start: {
-      dateTime: event.start.dateTime,
-      timeZone: event.start.timeZone,
-    },
+    start: event.created,
     location: event.location,
     htmlLink: event.htmlLink,
     description: event.description,
