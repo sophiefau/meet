@@ -4,38 +4,76 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import NumberOfEvents from '../components/NumberOfEvents';
 
-describe('<NumberOfEvents /> component', () => {
-  test('contains an input with the role of "spinbutton"', () => {
-    render(<NumberOfEvents onChange={() => {}} />);
-    const inputElement = screen.getByRole('spinbutton');
-    expect(inputElement).toBeInTheDocument();
+describe('<NumberOfEvents /> Component', () => {
+  let setCurrentNOE;
+  let setErrorAlert;
+
+  beforeEach(() => {
+    // Mock the functions to test their behavior
+    setCurrentNOE = jest.fn();
+    setErrorAlert = jest.fn();
+
+    // Render the component
+    render(
+      <NumberOfEvents
+        setCurrentNOE={setCurrentNOE}
+        setErrorAlert={setErrorAlert}
+      />
+    );
   });
 
-  test('default value of the input field is 32', () => {
-    render(<NumberOfEvents onChange={() => {}} />);
-    const inputElement = screen.getByRole('spinbutton');
-    expect(inputElement).toHaveValue(32);
+  test('component contains an input textbox', () => {
+    const input = screen.getByRole('spinbutton');
+    expect(input).toBeInTheDocument();
+  });
+  
+  test('ensures the default value of the textbox is 32', () => {
+    const input = screen.getByRole('spinbutton');
+    expect(input).toHaveValue(32);
   });
 
-  test('input value changes when user types', async () => {
-    render(<NumberOfEvents onChange={() => {}} />);
-    const inputElement = screen.getByRole('spinbutton');
-    // Simulate user typing (backspacing twice and typing '10')
-    await userEvent.type(inputElement, '{backspace}{backspace}10');
-    expect(inputElement).toHaveValue(10);
+  test('textbox value changes when user updates input', async () => {
+    const input = screen.getByRole('spinbutton');
+    const user = userEvent.setup();
+    
+    // Simulate the user typing '10' after clearing the value
+    await user.clear(input);
+    await user.type(input, '10');
+    
+    expect(input).toHaveValue(10);
   });
 
-  test('only allows numbers in the input field', async () => {
-    render(<NumberOfEvents onChange={() => {}} />);
-    const inputElement = screen.getByRole('spinbutton');
+  test('shows error when a non-number is entered', async () => {
+    const input = screen.getByRole('spinbutton');
+    const user = userEvent.setup();
 
-    // Simulate typing a letter (should not be accepted)
-    await userEvent.type(inputElement, 'a');
-    expect(inputElement).toHaveValue(32);
+    // Simulate typing a non-numeric value ('a')
+    await user.clear(input);
+    await user.type(input, 'a');
+    
+    expect(setErrorAlert).toHaveBeenCalledWith('Enter a valid number');
+  });
 
-    // Simulate typing a number (should be accepted)
-    await userEvent.clear(inputElement); 
-    await userEvent.type(inputElement, '5');
-    expect(inputElement).toHaveValue(5);
+  test('shows error when a number greater than 32 is entered', async () => {
+    const input = screen.getByRole('spinbutton');
+    const user = userEvent.setup();
+
+    // Simulate typing a number greater than 32
+    await user.clear(input);
+    await user.type(input, '50');
+    
+    expect(setErrorAlert).toHaveBeenCalledWith('Only maximum of 32 is allowed');
+  });
+
+  test('shows no error and calls setCurrentNOE when a valid number is entered', async () => {
+    const input = screen.getByRole('spinbutton');
+    const user = userEvent.setup();
+
+    // Simulate typing a valid number (e.g., '25')
+    await user.clear(input);
+    await user.type(input, '25');
+    
+    expect(setErrorAlert).toHaveBeenCalledWith(''); // Ensure no error message
+    expect(setCurrentNOE).toHaveBeenCalledWith('25'); // Ensure setCurrentNOE is called with '25'
   });
 });
