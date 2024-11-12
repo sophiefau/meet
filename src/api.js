@@ -51,7 +51,7 @@ export const getEvents = async () => {
   const token = await getAccessToken();
 
   if (token) {
-    removeQuery();
+    // removeQuery();
     const url =  "https://2sccv6ladl.execute-api.eu-central-1.amazonaws.com/dev/api/get-events" + "/" + token;
     const response = await fetch(url);
     const result = await response.json();
@@ -61,20 +61,20 @@ export const getEvents = async () => {
   }
 };
 
-const removeQuery = () => {
-  let newurl;
-  if (window.history.pushState && window.location.pathname) {
-    newurl =
-      window.location.protocol +
-      "//" +
-      window.location.host +
-      window.location.pathname;
-    window.history.pushState("", "", newurl);
-  } else {
-    newurl = window.location.protocol + "//" + window.location.host;
-    window.history.pushState("", "", newurl);
-  }
-};
+// const removeQuery = () => {
+//   let newurl;
+//   if (window.history.pushState && window.location.pathname) {
+//     newurl =
+//       window.location.protocol +
+//       "//" +
+//       window.location.host +
+//       window.location.pathname;
+//     window.history.pushState("", "", newurl);
+//   } else {
+//     newurl = window.location.protocol + "//" + window.location.host;
+//     window.history.pushState("", "", newurl);
+//   }
+// };
 
 const getToken = async (code) => {
   try {
