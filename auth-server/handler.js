@@ -73,7 +73,6 @@ module.exports.getAccessToken = async (event) => {
 };
 
 module.exports.getCalendarEvents = async (event) => {
-
   const access_token = decodeURIComponent(`${event.pathParameters.access_token}`);
   oAuth2Client.setCredentials({ access_token });
 
@@ -88,18 +87,19 @@ module.exports.getCalendarEvents = async (event) => {
       },
       (error, response) => {
         if (error) {
-          reject(error);
+          reject(error); // Reject the promise if there is an error
         } else {
-          resolve(response);
+          resolve(response); // Resolve the promise with the response if no error
         }
       }
-    )
+    );
+  })
     .then((results) => {
-      // Respond with OAuth token 
+      // Respond with OAuth token
       return {
         statusCode: 200,
         headers: {
-          'Access-Control-Allow-Origin': 'http://127.0.0.1:8080, http://192.168.43.124:8080, *',
+          'Access-Control-Allow-Origin': '*',
           'Access-Control-Allow-Credentials': true
         },
         body: JSON.stringify({ events: results.data.items }),
@@ -109,7 +109,7 @@ module.exports.getCalendarEvents = async (event) => {
       // Handle error
       return {
         statusCode: 500,
-        body: JSON.stringify(error),
+        body: JSON.stringify({ error: error.message }),
       };
     });
-})};
+};

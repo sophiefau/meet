@@ -9,7 +9,6 @@ const NumberOfEvents = ({ onChange }) => {
     const value = event.target.value;
     if (value === '' || /^[0-9]+$/.test(value)) { // Allow only numbers
       setNumber(value);
-      onChange(value);
     }
   };
 
