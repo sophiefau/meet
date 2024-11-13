@@ -9,18 +9,19 @@ const Event = ({ event }) => {
     <li>
       <div className="event">
         <h2>{event.summary}</h2>
-        <p> {event.created} </p>
-        <p> {event.location}</p>
-        </div>
+        <p>  <strong>{event.created} </strong></p>
+        <p>  {event.location}</p>
+        
       {showDetails ? (
         <div className="event-details">
-            <h3>About event:</h3>
-            <a href={event.htmlLink} target="_blank" rel="noopener noreferrer">
-              See details on Google Calendar
-            </a>
+            {/* <h3>Description</h3> */}
             <p>
-              <strong>Description:</strong> {event.description}
+              {event.description}
             </p>
+            <button className="btn-to-calendar">
+            <a href={event.htmlLink} target="_blank" rel="noopener noreferrer" className="link-to-calendar">
+              See on Google Calendar</a>
+            </button>
             </div>
       ) : null}
       <button className="show-details-btn"
@@ -28,6 +29,7 @@ const Event = ({ event }) => {
         >
           {showDetails ? "Hide Details" : "Show Details"}
         </button>
+        </div>
     </li>
   );
 };

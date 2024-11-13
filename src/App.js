@@ -33,13 +33,14 @@ const App = () => {
 
   return (
     <div className="App">
-      {errorAlert && <div className="error-alert">{errorAlert}</div>} {/* Show error message if there's one */}
       <CitySearch 
         allLocations={allLocations} 
         setCurrentCity={setCurrentCity} /> 
+        {errorAlert && <div className="error-alert">{errorAlert}</div>} {/* Show error message if there's one */}
       <NumberOfEvents 
         setCurrentNOE={setCurrentNOE}
         setErrorAlert={setErrorAlert} />
+        
       <EventList events={events} />
     </div>
   );
