@@ -5,7 +5,7 @@
   --color2: #c3ffb3; 
   --color3: #affc41;
   --border-color: #c3ffb3; 
-  --border-color-dark: #3c1642; 
+  --border-color-dark: #086375; 
   --background-color: rgb(253, 253, 253);
   --title-color:#086375; 
   --text-color: #3c1642;  
@@ -50,6 +50,7 @@ input[type="number"] {
   outline: none;
   border: 1px solid var(--border-color);
   background-color: var(--background-color);
+  color: var(--text-color);
   opacity: 0.9;
   font-size: 14px;
   line-height: 20px;
@@ -60,12 +61,12 @@ input[type="number"] {
 
 .input-field {
   width: 250px;
-  margin-top: 5px;
+  margin-top: 6px;
 }
 
 .label-number-field{
   font-style: italic;
-  color: var(--text-color);
+  color: var(--title-color);
 }
 
 #city-search {
@@ -107,13 +108,13 @@ input[type="number"] {
   font-style: italic;
   font-weight: 600;
   padding: none;
-  color:var(--color3);
+  color:var(--color2);
   margin-bottom: 5px;
 }
 
 h2{
-  font-weight: 800;
-  font-size: 28px;
+  font-weight: 300;
+  font-size: 38px;
   color: var(--title-color);
   text-transform: uppercase;
   padding-top:5px;
@@ -121,31 +122,35 @@ h2{
 }
 
 .event {
-  border: 1px solid var(--border-color-dark);
+  border: 1px solid var(--border-color);
   background-color: rgba(253, 253, 253, 0.75);;
   color: var(--text-color);
   padding: 20px 20px;
+  margin-top: 10px;
   margin-bottom: 10px;
   text-align: center;  
-  border-radius: 4px;
+  font-weight: 400;
+  border-radius: 8px;
   position: relative;
   width: 80%;
 }
 
 .event-details{
   margin-top: 20px;
+  width: 90%;
 }
 
 button{
   padding: 5px 8px;
   border-radius: 4px;
-  border: 1px solid var(--border-color-dark);
+  border: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color-dark);
   font-size:15px;
   font-weight: 500;
   font-style: italic;
   outline: none;
   cursor: pointer;
-  opacity: 0.7;
+  opacity: 0.8;
   transition: opacity 0.3s;
 }
 
