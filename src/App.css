@@ -104,12 +104,17 @@ input[type="number"] {
   background-color: var(--color2);
 }
 
+.alerts-container {
+  flex-direction: column;
+  width: 250px;
+  z-index: 1000;
+}
+
 .error-alert{
-  font-style: italic;
   font-weight: 600;
   padding: none;
   color:var(--color2);
-  margin-bottom: 5px;
+  margin-bottom: 10px;
 }
 
 h2{
