@@ -51,7 +51,7 @@ describe('<NumberOfEvents /> Component', () => {
     await user.clear(input);
     await user.type(input, 'a');
     
-    expect(setErrorAlert).toHaveBeenCalledWith('Enter a valid number');
+    expect(setErrorAlert).toHaveBeenCalledWith('Please enter a valid number');
   });
 
   test('shows error when a number greater than 32 is entered', async () => {
@@ -62,7 +62,7 @@ describe('<NumberOfEvents /> Component', () => {
     await user.clear(input);
     await user.type(input, '50');
     
-    expect(setErrorAlert).toHaveBeenCalledWith('Only maximum of 32 is allowed');
+    expect(setErrorAlert).toHaveBeenCalledWith('Only a maximum of 32 is allowed');
   });
 
   test('shows no error and calls setCurrentNOE when a valid number is entered', async () => {
@@ -74,6 +74,6 @@ describe('<NumberOfEvents /> Component', () => {
     await user.type(input, '25');
     
     expect(setErrorAlert).toHaveBeenCalledWith(''); // Ensure no error message
-    expect(setCurrentNOE).toHaveBeenCalledWith('25'); // Ensure setCurrentNOE is called with '25'
+    expect(setCurrentNOE).toHaveBeenCalledWith(25); // Ensure setCurrentNOE is called with the number 25
   });
 });
