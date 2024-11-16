@@ -80,6 +80,7 @@ export const getEvents = async () => {
 
   if (!navigator.onLine) {
     const events = localStorage.getItem("lastEvents");
+    console.log('Caching events:', result.events);
     NProgress.done();
     return events ? JSON.parse(events) : [];
   }
@@ -97,6 +98,7 @@ export const getEvents = async () => {
     if (result) {
       NProgress.done();
       localStorage.setItem("lastEvents", JSON.stringify(result.events));
+      console.log('Caching events:', result.events);
       return result.events;
     } else return null;
   }
