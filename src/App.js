@@ -16,23 +16,23 @@ const App = () => {
   const [errorAlert, setErrorAlert] = useState("");
 
   useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const allEvents = await getEvents();
+        const filteredEvents =
+          currentCity === "See all cities"
+            ? allEvents
+            : allEvents.filter((event) => event.location === currentCity);
+  
+        setEvents(filteredEvents.slice(0, currentNOE)); // Slice based on the current number of events
+        setAllLocations(extractLocations(allEvents)); // Update locations for CitySearch
+      } catch (error) {
+        setErrorAlert("Error fetching events. Please try again later.");
+      }
+    };
+  
     fetchData();
-  }, [currentCity, currentNOE]); // Re-fetch when city or number of events changes
-
-  const fetchData = async () => {
-    try {
-      const allEvents = await getEvents();
-      const filteredEvents =
-        currentCity === "See all cities"
-          ? allEvents
-          : allEvents.filter((event) => event.location === currentCity);
-
-      setEvents(filteredEvents.slice(0, currentNOE)); // Slice based on the current number of events
-      setAllLocations(extractLocations(allEvents)); // Update locations for CitySearch
-    } catch (error) {
-      setErrorAlert("Error fetching events. Please try again later.");
-    }
-  };
+  }, [currentCity, currentNOE]); 
 
   return (
     <div className="App">
