@@ -80,7 +80,7 @@ export const getEvents = async () => {
 
   if (!navigator.onLine) {
     const events = localStorage.getItem("lastEvents");
-    console.log('Caching events:', result.events);
+    console.log('Caching events:', events);
     NProgress.done();
     return events ? JSON.parse(events) : [];
   }
