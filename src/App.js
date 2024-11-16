@@ -14,8 +14,18 @@ const App = () => {
   const [currentCity, setCurrentCity] = useState("See all cities");
   const [infoAlert, setInfoAlert] = useState("");
   const [errorAlert, setErrorAlert] = useState("");
+  const [warningAlert, setWarningAlert] = useState("");
 
   useEffect(() => {
+    if (!navigator.onLine) {
+      setWarningAlert("You are offline. Events data may be outdated.")
+    } else {
+      setWarningAlert("");
+    }
+    fetchData();
+  }, [currentCity, currentNOE]);
+
+
     const fetchData = async () => {
       try {
         const allEvents = await getEvents();
@@ -30,9 +40,6 @@ const App = () => {
         setErrorAlert("Error fetching events. Please try again later.");
       }
     };
-  
-    fetchData();
-  }, [currentCity, currentNOE]); 
 
   return (
     <div className="App">
@@ -51,6 +58,7 @@ const App = () => {
       <div className="alerts-container">
         {infoAlert.length ? <InfoAlert text={infoAlert} /> : null}
         {errorAlert.length ? <ErrorAlert text={errorAlert} /> : null}
+        {warningAlert.length ? <InfoAlert text={warningAlert} /> : null}
       </div>
 
       <EventList events={events} />
