@@ -73,7 +73,7 @@ const getToken = async (code) => {
 
 export const getEvents = async () => {
   NProgress.start();
-
+  
   if (window.location.href.startsWith("http://localhost")) {
     NProgress.done();
     return mockData;
@@ -93,26 +93,15 @@ export const getEvents = async () => {
       "https://2sccv6ladl.execute-api.eu-central-1.amazonaws.com/dev/api/get-events" +
       "/" +
       token;
-    const response = await fetch(eventsURL)
-    .then((response) => response.json())
-    .then((data) => {
-      if (!data) return [];
+    const response = await fetch(url);
+    const result = await response.json();
+    if (result) {
       NProgress.done();
-      localStorage.setItem("lastEvents", JSON.stringify(data));
-      //access data directly instead not data.events
-      const result = data;
-      return result;
-    }
-  ).catch((error) => {
-    if (error) {
-      NProgress.done();
-      throw new Error(`HTTP error! status: ${error.status}`);
-    }
-    console.log(error);
-  });
-  return response;
-}
-};  
+      localStorage.setItem("lastEvents", JSON.stringify(result.events));
+      return result.events;
+    } else return null;
+  }
+};
 
 export const getEventDetails = (events) => {
   return events.map((event) => ({
