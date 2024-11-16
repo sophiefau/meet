@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import CitySearch from "./components/CitySearch";
 import EventList from "./components/EventList";
 import NumberOfEvents from "./components/NumberOfEvents";
-import { InfoAlert, ErrorAlert } from "./components/Alert";
+import { InfoAlert, ErrorAlert, WarningAlert } from "./components/Alert";
 import { extractLocations, getEvents } from "./api";
 import "./App.css";
 
@@ -17,21 +17,6 @@ const App = () => {
   const [warningAlert, setWarningAlert] = useState("");
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const allEvents = await getEvents();
-        const filteredEvents =
-          currentCity === "See all cities"
-            ? allEvents
-            : allEvents.filter((event) => event.location === currentCity);
-  
-        setEvents(filteredEvents.slice(0, currentNOE)); // Slice based on the current number of events
-        setAllLocations(extractLocations(allEvents)); // Update locations for CitySearch
-      } catch (error) {
-        setErrorAlert("Error fetching events. Please try again later.");
-      }
-    };
-  
     if (!navigator.onLine) {
       setWarningAlert("You are offline. Events data may be outdated.");
     } else {
@@ -40,9 +25,19 @@ const App = () => {
     fetchData();
   }, [currentCity, currentNOE]);
 
+  const fetchData = async () => {
+    const allEvents = await getEvents();
+    const filteredEvents =
+      currentCity === "See all cities"
+        ? allEvents
+        : allEvents.filter((event) => event.location === currentCity);
+    const currentEvents = await filteredEvents.slice(0, currentNOE);
+    setEvents(currentEvents);
+    setAllLocations(extractLocations(allEvents));
+  };
+
   return (
     <div className="App">
-
       <CitySearch
         allLocations={allLocations}
         setCurrentCity={setCurrentCity}

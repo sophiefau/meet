@@ -2,14 +2,14 @@
 
 :root {
   --color1: rgb(29, 211, 176); 
-  --color2: rgb(195, 255, 179); 
-  --color3: rgb(175, 252, 65);
+  --color2: #c3ffb3; 
+  --color3: #affc41;
   --color4: rgb(22, 116, 63);
   --border-color: #c3ffb3; 
   --border-color-dark: #086375; 
   --background-color: rgb(253, 253, 253);
-  --title-color:rgb(8, 99, 117); 
-  --text-color: rgb(59, 22, 65);  
+  --title-color:#086375; 
+  --text-color: #3b1641;  
 }
 
 html, body {
@@ -110,14 +110,6 @@ input[type="number"] {
   flex-direction: column;
   width: 250px;
   z-index: 1000;
-}
-
-.error-alert{
-  font-weight: 600;
-  padding: none;
-  color:var(--color2);
-  margin-bottom: 10px;
-  border-color: var(--color3);
 }
 
 h2{
