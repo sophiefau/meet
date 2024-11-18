@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import CitySearch from "./components/CitySearch";
 import EventList from "./components/EventList";
 import NumberOfEvents from "./components/NumberOfEvents";
+import CityEventsChart from "./components/CityEventsChart";
 import { InfoAlert, ErrorAlert, WarningAlert } from "./components/Alert";
 import { extractLocations, getEvents } from "./api";
 import "./App.css";
@@ -59,6 +60,8 @@ const App = () => {
         {errorAlert.length ? <ErrorAlert text={errorAlert} /> : null}
         {warningAlert.length ? <WarningAlert text={warningAlert} /> : null}
       </div>
+
+      <CityEventsChart allLocations={allLocations} events={events} />
 
       <EventList events={events} />
     </div>
