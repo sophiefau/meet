@@ -13,8 +13,8 @@ Check out [Meet app live!](https://sophiefau.github.io/meet/)
 - **Jest** and **Puppeteer** → for testing and end-to-end coverage
 - **Recharts** → for data visualization
 
-[Example view on Website](https://github.com/sophiefau/meet/blob/main/screenshots/meetapp_full.png)
-[Example view on Mobile](https://github.com/sophiefau/meet/blob/main/screenshots/meetapp_mobile.png)
+![Example view on Website](https://github.com/sophiefau/meet/blob/main/screenshots/meetapp_full.png)
+![Example view on Mobile](https://github.com/sophiefau/meet/blob/main/screenshots/meetapp_mobile.png)
 
 ## Key Features
 
