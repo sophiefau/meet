@@ -13,7 +13,7 @@ Meet app allows users to see events in the city where there are. They can select
 
 ## Overview
 
-**Check out [Meet app live!](https://sophiefau.github.io/meet/)**
+Check out [Meet app live!](https://sophiefau.github.io/meet/)
 
 ![Example view on Website](https://github.com/sophiefau/meet/blob/main/screenshots/meetapp_full.png)
 ![Example view on Mobile](https://github.com/sophiefau/meet/blob/main/screenshots/meetapp_mobile.png)
