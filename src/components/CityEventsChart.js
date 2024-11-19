@@ -27,6 +27,7 @@ const CityEventsChart = ({ allLocations, events }) => {
   }, [getData]); // Correct dependency array
 
   return (
+    <div className="scatter-chart">
     <ResponsiveContainer width="99%" height={400}>
       <ScatterChart
         margin={{
@@ -46,6 +47,7 @@ const CityEventsChart = ({ allLocations, events }) => {
         <Scatter name="Events" data={data} fill="#8884d8" />
       </ScatterChart>
     </ResponsiveContainer>
+    </div>
   );
 };
 

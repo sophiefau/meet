@@ -38,10 +38,11 @@ const CitySearch = ({ allLocations, setCurrentCity, setInfoAlert }) => {
 
   return (
     <div id="city-search">
+      <label>Search for a city:</label>
       <input
         type="text"
-        className="input-field city"
-                placeholder="Search for a city"
+        className="input-field"          
+        placeholder="See all cities"
         value={query}        
         onFocus={() => setShowSuggestions(true)}
         onChange={handleInputChanged}

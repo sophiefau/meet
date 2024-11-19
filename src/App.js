@@ -7,7 +7,7 @@ import CityEventsChart from "./components/CityEventsChart";
 import EventGenresChart from "./components/EventGenresChart";
 import { InfoAlert, ErrorAlert, WarningAlert } from "./components/Alert";
 import { extractLocations, getEvents } from "./api";
-import logo from "./assets/meet_logo_192x192.png";
+import logo from "./assets/meet_logo_app.png";
 import "./App.css";
 
 const App = () => {
@@ -18,6 +18,7 @@ const App = () => {
   const [infoAlert, setInfoAlert] = useState("");
   const [errorAlert, setErrorAlert] = useState("");
   const [warningAlert, setWarningAlert] = useState("");
+  const [showBackToTop, setShowBackToTop] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -28,8 +29,8 @@ const App = () => {
             ? allEvents
             : allEvents.filter((event) => event.location === currentCity);
 
-        setEvents(filteredEvents.slice(0, currentNOE)); // Slice based on the current number of events
-        setAllLocations(extractLocations(allEvents)); // Update locations for CitySearch
+        setEvents(filteredEvents.slice(0, currentNOE));
+        setAllLocations(extractLocations(allEvents));
       } catch (error) {
         setErrorAlert("Error fetching events. Please try again later.");
       }
@@ -41,13 +42,36 @@ const App = () => {
       setWarningAlert("");
     }
     fetchData();
+
+    // Event listener to show/hide the "Back to Top" button
+    const handleScroll = () => {
+      if (window.scrollY > 300) {
+        setShowBackToTop(true);
+      } else {
+        setShowBackToTop(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, [currentCity, currentNOE]);
+
+  const handleBackToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
 
   return (
     <div className="App">
       <header className="logo">
         <img src={logo} alt="Meet app logo"/>
+        <h1> Meet App</h1>
         </header>
+        <div className="search-bars">
       <CitySearch
         allLocations={allLocations}
         setCurrentCity={setCurrentCity}
@@ -58,6 +82,7 @@ const App = () => {
         setCurrentNOE={setCurrentNOE}
         setErrorAlert={setErrorAlert}
       />
+      </div>
 
       <div className="alerts-container">
         {infoAlert.length ? <InfoAlert text={infoAlert} /> : null}
@@ -70,6 +95,13 @@ const App = () => {
         <CityEventsChart allLocations={allLocations} events={events} />     
       </div>
       <EventList events={events} />
+      {showBackToTop && (
+        <button
+          className="back-to-top"
+          onClick={handleBackToTop} >
+          Back to Top
+        </button>
+      )}
     </div>
   );
 };
