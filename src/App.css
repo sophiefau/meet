@@ -1,19 +1,20 @@
-@import url('https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Karla:ital,wght@0,200..800;1,200..800&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Quicksand:wght@300..700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Karla:ital,wght@0,200..800;1,200..800&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Quicksand:wght@300..700&display=swap");
 
 :root {
-  --color1: #1dd3b0; 
-  --color2: #c3ffb3; 
+  --color1: #1dd3b0;
+  --color2: rgb(195, 255, 179);
   --color3: #affc41;
   --color4: #16743f;
-  --border-color: #affc41; 
-  --border-color-dark: #257281; 
+  --border-color: #affc41;
+  --border-color-dark: #257281;
   --background-color: rgb(253, 253, 253);
-  --title-color:#8884d8; 
-  --text-color: #2f2f2f;  
+  --title-color: rgb(136, 132, 216);
+  --text-color: #2f2f2f;
   /* --text-color: #372b54;   */
 }
 
-html, body {
+html,
+body {
   height: 100%;
   margin: 0;
   padding: 0;
@@ -21,8 +22,8 @@ html, body {
 
 body {
   background: linear-gradient(to bottom, var(--color1), var(--color2));
-  min-height: 100vh; 
-  background-attachment: fixed; 
+  min-height: 100vh;
+  background-attachment: fixed;
 }
 
 .App {
@@ -32,15 +33,15 @@ body {
 
 .App * {
   box-sizing: border-box;
-  margin:auto;
+  margin: auto;
   font-family: "Karla", sans-serif;
 }
 
-.logo img{
- height: 100px;
- border-radius: 32px;
- margin-bottom: 10px;
- opacity: 0.8;
+.logo img {
+  height: 100px;
+  border-radius: 32px;
+  margin-bottom: 10px;
+  opacity: 0.8;
 }
 
 ul {
@@ -48,12 +49,12 @@ ul {
   list-style: none;
 }
 
-.search-bars{
+.search-bars {
   display: grid;
   grid-template-columns: 1fr 1fr;
   width: 60%;
   margin-top: 20px;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
   gap: 12px;
 }
 
@@ -78,7 +79,7 @@ input[type="number"] {
   margin-bottom: 20px;
 }
 
-label{
+label {
   text-transform: uppercase;
   font-size: 15px;
   color: var(--color4);
@@ -105,6 +106,7 @@ label{
   z-index: 2;
   align-self: center;
   margin: 0;
+  margin-top: 10px;
   font-size: 14px;
   box-shadow: 10px 10px 16px -12px rgba(0, 0, 0, 0.75);
 }
@@ -132,44 +134,44 @@ label{
   z-index: 1000;
 }
 
-h1{
+h1 {
   color: var(--color2);
 }
 
-h2{
+h2 {
   font-weight: 350;
   font-size: 38px;
   color: var(--title-color);
   text-transform: uppercase;
-  padding-top:5px;
+  padding-top: 5px;
   padding-bottom: 10px;
 }
 
 .event {
   border: 1px solid var(--color2);
-  background-color: rgba(253, 253, 253, 0.5);;
+  background-color: rgba(253, 253, 253, 0.5);
   color: var(--text-color);
   padding: 20px 20px;
   margin-top: 10px;
   margin-bottom: 12px;
-  text-align: center;  
-  font-weight: 300;
+  text-align: center;
+  font-weight: 400;
   border-radius: 32px;
   position: relative;
   width: 60%;
 }
 
-.event-details{
+.event-details {
   margin-top: 20px;
   width: 60%;
 }
 
-button{
+button {
   padding: 5px 8px;
   border-radius: 12px;
   border: none;
   border-bottom: 1.5px solid var(--title-color);
-  font-size:15px;
+  font-size: 15px;
   font-weight: 500;
   font-style: italic;
   outline: none;
@@ -185,34 +187,34 @@ button:hover {
 .show-details-btn {
   width: 150px;
   background-color: var(--color3);
-  margin-top:10px;
-  margin-bottom:10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
-.btn-to-calendar{
+.btn-to-calendar {
   width: 200px;
   background-color: var(--color1);
-  margin-top:20px;
-  margin-bottom:10px;
+  margin-top: 20px;
+  margin-bottom: 10px;
 }
 
-.link-to-calendar{
-  color:var(--text-color);
+.link-to-calendar {
+  color: var(--text-color);
   text-decoration: none;
 }
 
-.charts-container{
+.charts-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
   margin-bottom: 50px;
 }
 
 .scatter-chart {
- width: 70%;
- margin-left: 0;
+  width: 80%;
+  margin-left: 0;
 }
 
-.back-to-top{
+.back-to-top {
   position: fixed;
   left: 80%;
   bottom: 10px;
@@ -223,22 +225,25 @@ button:hover {
   cursor: pointer;
 }
 
-@media (max-width: 768px){
-  .search-bars{
+@media (max-width: 768px) {
+  .search-bars {
     grid-template-columns: 1fr;
     width: 100%;
   }
-  .charts-container{
+  .charts-container {
     grid-template-columns: 1fr;
   }
-  .event{
-  width: 90%;
-}
-  .event-details{
+  .event {
+    width: 90%;
+  }
+  .event-details {
     width: 90%;
   }
   .scatter-chart {
     width: 100%;
     margin-top: 50px;
-   }
+  }
+  h2 {
+    font-size: 33px;
+  }
 }

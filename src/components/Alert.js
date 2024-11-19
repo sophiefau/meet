@@ -12,11 +12,11 @@ class Alert extends Component {
     return {
       color: this.color,
       backgroundColor: this.bgColor,
-      borderWidth: "2px",
+      borderWidth: "1px",
       borderStyle: "solid",
       fontWeight: "bolder",
       borderRadius: "7px",
-      borderColor: "rgb(175, 252, 65)",
+      borderColor: "rgb(136, 132, 216)",
       textAlign: "center",
       fontSize: "13px",
       margin: "10px 0",
@@ -45,7 +45,7 @@ class ErrorAlert extends Alert {
   constructor(props) {
     super(props);
     this.color = "rgb(22, 116, 63)";
-    this.bgColor = "rgb(175, 252, 65)";
+    this.bgColor = "rgb(29, 211, 176)";
   }
 }
 
