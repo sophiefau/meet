@@ -4,8 +4,10 @@ import CitySearch from "./components/CitySearch";
 import EventList from "./components/EventList";
 import NumberOfEvents from "./components/NumberOfEvents";
 import CityEventsChart from "./components/CityEventsChart";
+import EventGenresChart from "./components/EventGenresChart";
 import { InfoAlert, ErrorAlert, WarningAlert } from "./components/Alert";
 import { extractLocations, getEvents } from "./api";
+import logo from "./assets/meet_logo_192x192.png";
 import "./App.css";
 
 const App = () => {
@@ -25,14 +27,14 @@ const App = () => {
           currentCity === "See all cities"
             ? allEvents
             : allEvents.filter((event) => event.location === currentCity);
-  
+
         setEvents(filteredEvents.slice(0, currentNOE)); // Slice based on the current number of events
         setAllLocations(extractLocations(allEvents)); // Update locations for CitySearch
       } catch (error) {
         setErrorAlert("Error fetching events. Please try again later.");
       }
     };
-  
+
     if (!navigator.onLine) {
       setWarningAlert("You are offline. Events data may be outdated.");
     } else {
@@ -43,7 +45,9 @@ const App = () => {
 
   return (
     <div className="App">
-
+      <header className="logo">
+        <img src={logo} alt="Meet app logo"/>
+        </header>
       <CitySearch
         allLocations={allLocations}
         setCurrentCity={setCurrentCity}
@@ -61,8 +65,10 @@ const App = () => {
         {warningAlert.length ? <WarningAlert text={warningAlert} /> : null}
       </div>
 
-      <CityEventsChart allLocations={allLocations} events={events} />
-
+      <div className="charts-container">
+        <EventGenresChart events={events} />
+        <CityEventsChart allLocations={allLocations} events={events} />     
+      </div>
       <EventList events={events} />
     </div>
   );
