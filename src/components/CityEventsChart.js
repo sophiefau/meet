@@ -32,7 +32,7 @@ const CityEventsChart = ({ allLocations, events }) => {
       <ScatterChart
         margin={{
           top: 60,
-          right: 10,
+          right: 20,
           bottom: 60,
         }}
       >
