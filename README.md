@@ -4,7 +4,7 @@
 
 Meet app allows users to see events in the city where there are. They can select the city and look for events. The app is a serverless, progressive web application (PWA) with React using a test-driven development (TDD) technique. The application uses the Google Calendar API to fetch upcoming events.
 
-Go to [Meet App]('https://sophiefau.github.io/meet/')
+Check out [Meet app live!](https://sophiefau.github.io/meet/)
 
 ## Tech Stack
 - **React** → for building the user interface
@@ -12,6 +12,9 @@ Go to [Meet App]('https://sophiefau.github.io/meet/')
 - **Google Calendar API** → for fetching event data
 - **Jest** and **Puppeteer** → for testing and end-to-end coverage
 - **Recharts** → for data visualization
+
+(https://github.com/sophiefau/meet/blob/main/screenshots/meetapp_full.png)
+(https://github.com/sophiefau/meet/blob/main/screenshots/meetapp_mobile.png)
 
 ## Key Features
 
