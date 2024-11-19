@@ -69,7 +69,7 @@ const App = () => {
     <div className="App">
       <header className="logo">
         <img src={logo} alt="Meet app logo"/>
-        <h1> Meet App</h1>
+        <h1> Meet app</h1>
         </header>
         <div className="search-bars">
       <CitySearch

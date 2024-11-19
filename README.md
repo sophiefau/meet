@@ -4,6 +4,15 @@
 
 Meet app allows users to see events in the city where there are. They can select the city and look for events. The app is a serverless, progressive web application (PWA) with React using a test-driven development (TDD) technique. The application uses the Google Calendar API to fetch upcoming events.
 
+Go to [Meet App]('https://sophiefau.github.io/meet/')
+
+## Tech Stack
+- **React** → for building the user interface
+- **Serverless** and **AWS** → for scalable backend services
+- **Google Calendar API** → for fetching event data
+- **Jest** and **Puppeteer** → for testing and end-to-end coverage
+- **Recharts** → for data visualization
+
 ## Key Features
 
 Meet app support the following features: 
@@ -55,11 +64,3 @@ As a user, I should be able to view charts that visualize event details so that 
 - *GIVEN* I am viewing the event details page
 - *WHEN* I open the charts section
 - *THEN* I should see visual representations of event data, such as trends and statistics
-
-
-## How to run
-
-The project is still in developement!
-
-## Dependencies
-- **React**
