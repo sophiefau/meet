@@ -11,6 +11,16 @@ Meet app allows users to see events in the city where there are. They can select
 - **Jest** and **Puppeteer** → for testing and end-to-end coverage
 - **Recharts** → for data visualization
 
+## Key Features
+
+Meet app support the following features: 
+- Authentificate using Google Account
+- Filter Events by City
+- Show/Hide Event Details
+- Specify Number of Events
+- Use the App When Offline
+- Display Charts Visualizing Event Details
+
 ## Overview
 
 Check out [Meet app live!](https://sophiefau.github.io/meet/)
@@ -18,9 +28,9 @@ Check out [Meet app live!](https://sophiefau.github.io/meet/)
 ![Example view on Website](https://github.com/sophiefau/meet/blob/main/screenshots/meetapp_full.png)
 ![Example view on Mobile](https://github.com/sophiefau/meet/blob/main/screenshots/meetapp_mobile.png)
 
-## Key Features
+## User Stories With Gherkin
 
-Meet app support the following features: 
+Meet app was build using the following user stories using Gherkin: 
 
 ### Filter Events by City
 
@@ -69,3 +79,30 @@ As a user, I should be able to view charts that visualize event details so that 
 - *GIVEN* I am viewing the event details page
 - *WHEN* I open the charts section
 - *THEN* I should see visual representations of event data, such as trends and statistics
+
+## Installation and Setup
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/mayyinandprojects/meet.git
+
+2. Navigate into the project directory:
+    ```bash
+    cd meet
+
+3. Run the app:
+    ```bash
+    npm start
+
+## Testing
+
+1. Unit and Integration Tests: Run using Jest.
+    ```bash
+    npm run test
+
+2. End-to-End Tests: Run using Puppeteer (Switch headless mode to true in EndtoEnd.tests.js).
+    ```bash
+    npm run test
+
+## License
+This project is made solely for educational purpose as part of Career Foundry Fullstack Development Course. This is released under the MIT License.
