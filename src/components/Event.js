@@ -1,6 +1,7 @@
 // src/components/Event.js
 import React from "react";
 import { useState } from "react";
+import { formatDate } from "../api";
 
 const Event = ({ event }) => {
   const [showDetails, setShowDetails] = useState(false);
@@ -9,7 +10,7 @@ const Event = ({ event }) => {
     <li>
       <div className="event">
         <h2>{event.summary}</h2>
-        <p>  <strong>{event.created} </strong></p>
+        <p><strong>{formatDate(event.start.dateTime)}</strong></p>
         <p>  {event.location}</p>
         
       {showDetails ? (

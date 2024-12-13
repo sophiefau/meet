@@ -113,7 +113,7 @@ export const getEventDetails = (events) => {
   }));
 };
 
-function formatDate(dateString) {
+export function formatDate(dateString) {
   const options = {
     day: '2-digit',
     month: 'long',

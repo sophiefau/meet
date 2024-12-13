@@ -24,7 +24,7 @@ const EventGenresChart = ({ events }) => {
 
   const renderCustomizedLabel = ({ cx, cy, midAngle, outerRadius, percent, index }) => {
     const RADIAN = Math.PI / 180;
-    const radius = outerRadius;
+    const radius = outerRadius * 1.05;
     const x = cx + radius * Math.cos(-midAngle * RADIAN) * 1.07;
     const y = cy + radius * Math.sin(-midAngle * RADIAN) * 1.07;
     return percent ? (
@@ -33,6 +33,10 @@ const EventGenresChart = ({ events }) => {
         y={y}
         textAnchor={x > cx ? 'start' : 'end'}
         dominantBaseline="central"
+        style={{
+          fontSize: '15px',
+          fill: '#6c6c6c', 
+        }}
       >
         {`${genres[index]} ${(percent * 100).toFixed(0)}%`}
       </text>

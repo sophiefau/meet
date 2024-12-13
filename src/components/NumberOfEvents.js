@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 
 const NumberOfEvents = ({ setCurrentNOE, setErrorAlert }) => {
-  const [number, setNumber] = useState(32);
+  const [number, setNumber] = useState(99);
 
   const handleChange = (event) => {
     const value = event.target.value;
@@ -11,8 +11,8 @@ const NumberOfEvents = ({ setCurrentNOE, setErrorAlert }) => {
     let errorText = "";
     if (isNaN(numValue) || numValue <= 0) {
       errorText = "Please enter a valid number";
-    } else if (numValue > 32) {
-      errorText = "Only a maximum of 32 is allowed";
+    } else if (numValue > 99) {
+      errorText = "Only a maximum of 99 is allowed";
     }
     setErrorAlert(errorText);
     if (!errorText) {
@@ -22,14 +22,18 @@ const NumberOfEvents = ({ setCurrentNOE, setErrorAlert }) => {
 
   return (
     <div id="number-of-events">
-      <label>Number of events to display:</label>
+      <label htmlFor="number-of-events-input">
+        Number of events to display:
+      </label>
       <input
+        id="number-of-events-input"
         className="input-field"
         type="number"
         value={number}
         onChange={handleChange}
         min="1"
-        placeholder="32"
+        placeholder="99"
+         aria-label="Select number of events"
       />
     </div>
   );
